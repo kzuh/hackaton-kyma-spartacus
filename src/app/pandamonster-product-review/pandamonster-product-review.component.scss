@@ -1,0 +1,26 @@
+cx-product-reviews .review {
+    --cx-grid-template-columns: 20vw auto;
+    --cx-text-align: left;
+  
+    .title {
+      &:before {
+        content: '"';
+      }
+      &:after {
+        content: '"';
+      }
+    }
+    cx-star-rating,
+    .title,
+    .name,
+    .date {
+      --cx-grid-column: 1;
+      --cx-grid-row: auto;
+    }
+    .text {
+      --cx-grid-column: 2;
+      --cx-grid-row: 1 / span 5;
+    }
+    border-bottom: solid 1px var(--cx-light);
+  
+  }

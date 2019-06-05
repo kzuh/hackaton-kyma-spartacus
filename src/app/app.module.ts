@@ -5,14 +5,39 @@ import { AppComponent } from './app.component';
 import { StorefrontModule, defaultCmsContentConfig } from '@spartacus/storefront';
 import { ReviewProductPopupComponent } from './review-product-popup/review-product-popup.component';
 import { translations } from '@spartacus/assets';
+import { PandamonsterProductReviewComponent } from './pandamonster-product-review/pandamonster-product-review.component';
+
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { I18nModule } from '@spartacus/core';
+import {
+  FormComponentsModule,
+  StarRatingModule,
+} from '@spartacus/storefront';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ReviewProductPopupComponent
+    ReviewProductPopupComponent,
+    PandamonsterProductReviewComponent
   ],
+  entryComponents:[PandamonsterProductReviewComponent],
   imports: [
-    BrowserModule, StorefrontModule.withConfig({
+    BrowserModule,
+    
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    FormComponentsModule,
+    I18nModule,
+    StarRatingModule,
+    StorefrontModule.withConfig({
+
+      cmsComponents: {
+        ProductReviewsTabComponent : {
+          selector : 'app-pandamonster-product-review',
+        },
+      },
       siteContext: {
         urlEncodingParameters: ['BASE_SITE', 'LANGUAGE', 'CURRENCY'],
         parameters: {
