@@ -1,8 +1,6 @@
 .review-product-popup{
-    position: absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    position: relative;
+
     z-index: 10000;
     padding: 50px;
     background: #000;

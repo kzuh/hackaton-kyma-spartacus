@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { product } from '@spartacus/storefront/translations/en/product.en';
 import { Observable, of } from 'rxjs';
-
+import { AuthService } from '@spartacus/core';
+import { map, switchMap } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 export interface Product {
-  code:String
-  name:String
+  productCode: String
+  productName: String
 }
 
 
@@ -14,9 +16,17 @@ export interface Product {
 })
 export class ProductService {
 
-  constructor() { }
-  
-  getProducts():Observable<Product[]>{
-    return of([{code: "P-123", name: "Super P-123"},{code: "P-321", name: "Super P-321"}]);
+  constructor(private authService: AuthService, private httpClient: HttpClient) { }
+
+  getProducts(): Observable<Product[]> {
+    return this.authService.getUserToken().pipe(
+      map(userToken => userToken.userId),
+      switchMap(userId => this.getProductsByUserId(userId))
+    )
+
+    //return of([{code: "P-123", name: "Super P-123"},{code: "P-321", name: "Super P-321"}]);
+  }
+  private getProductsByUserId(userId:String){
+    return this.httpClient.get<Product[]>(`https://test.hack7.cluster.extend.cx.cloud.sap/${userId}/reviews`)
   }
 }
