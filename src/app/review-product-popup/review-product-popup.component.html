@@ -1,9 +1,12 @@
-<div class="review-product-popup">
-  You recently bought following products <br>
-  <a *ngFor="let product of products$ | async" href="/product/{{product.code}}">
-    {{product.name}}
-  </a>
+<div class="review-product-popup--wrapper" *ngIf="products$ | async ; let products">
+  <div class="review-product-popup" *ngIf="products.length">
+    You recently bought following products <br>
+    <a *ngFor="let product of products" href="/product/{{product.productCode}}">
+      {{product.productName}}
+    </a>
 
-  <br>
-  If you review it you will get %2 discount on all products <br>
+    <br>
+    If you review it you will get %2 discount on all products <br>
+  </div>
+
 </div>
