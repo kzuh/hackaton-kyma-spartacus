@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { ConfigModule } from '@spartacus/core';
 import { AppComponent } from './app.component';
 import { StorefrontModule ,defaultCmsContentConfig,translations} from '@spartacus/storefront';
+import { ReviewProductPopupComponent } from './review-product-popup/review-product-popup.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReviewProductPopupComponent
   ],
   imports: [
     BrowserModule,StorefrontModule.withConfig({
