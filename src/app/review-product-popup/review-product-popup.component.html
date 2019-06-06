@@ -1,12 +1,17 @@
 <div class="review-product-popup--wrapper" *ngIf="products$ | async ; let products">
   <div class="review-product-popup" *ngIf="products.length">
-    You recently bought following products <br>
-    <a *ngFor="let product of products" href="/product/{{product.productCode}}">
-      {{product.productName}}
-    </a>
+    <img src="https://image.flaticon.com/icons/svg/651/651089.svg">
+    <div class="review-product-popup--text">
+      You recently bought following products <br>
+      <ul>
+        <li *ngFor="let product of products">
+          <a href="/product/{{product.productCode}}">{{product.productName}}</a>
 
-    <br>
-    If you review it you will get %2 discount on all products <br>
+        </li>
+      </ul>
+      If you review it you will get <span class="review-product-popup---percent">%2</span> discount on all products <br>
+    </div>
+
+    <img src="https://image.flaticon.com/icons/svg/945/945914.svg">
+
   </div>
-
-</div>

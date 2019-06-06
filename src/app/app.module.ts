@@ -21,7 +21,7 @@ import {
     ReviewProductPopupComponent,
     PandamonsterProductReviewComponent
   ],
-  entryComponents:[PandamonsterProductReviewComponent],
+  entryComponents:[PandamonsterProductReviewComponent, ReviewProductPopupComponent],
   imports: [
     BrowserModule,
     
@@ -37,6 +37,9 @@ import {
         CMSTabParagraphContainer : {
           selector : 'app-pandamonster-product-review',
         },
+        reviewBanner:{
+          selector: 'app-review-product-popup'
+        }
       },
       siteContext: {
           urlEncodingParameters: ['BASE_SITE', 'LANGUAGE', 'CURRENCY'],
@@ -72,6 +75,9 @@ import {
       i18n: {
         resources: translations
       }
+
+
+
     }), ConfigModule.withConfigFactory(defaultCmsContentConfig)]
 
   ,
