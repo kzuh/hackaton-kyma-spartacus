@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { filter, switchMap, tap } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Product, Review, ProductReviewService} from '@spartacus/core';
+import { Review, ProductReviewService, UIProduct} from '@spartacus/core';
 import { CurrentProductService } from '@spartacus/storefront';
 
 
@@ -20,7 +20,7 @@ initialMaxListItems = 5;
 maxListItems: number;
 reviewForm: FormGroup;
 
-product$: Observable<Product> = this.currentProductService.getProduct();
+product$: Observable<UIProduct> = this.currentProductService.getProduct();
 
 reviews$: Observable<Review[]> = this.product$.pipe(
   filter(Boolean),
@@ -50,7 +50,7 @@ setRating(rating): void {
   this.reviewForm.controls.rating.setValue(rating);
 }
 
-submitReview(product: Product): void {
+submitReview(product: UIProduct): void {
   const reviewFormControls = this.reviewForm.controls;
   const review: Review = {
     headline: reviewFormControls.title.value,
