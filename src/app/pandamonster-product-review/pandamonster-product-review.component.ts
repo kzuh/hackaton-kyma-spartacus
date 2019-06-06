@@ -27,9 +27,7 @@ reviews$: Observable<Review[]> = this.product$.pipe(
   filter(Boolean),
   switchMap(product => this.reviewService.getByProductCode(product.code)),
   filter(Boolean),  
-  tap(x => console.log('aaa', x)),
   switchMap(reviews => this.reviewedVerifiedService.returnVerifiedReviees(reviews)),
-  tap(x => console.log('aab', x)),
   tap(() => {
     this.resetReviewForm();
     this.maxListItems = this.initialMaxListItems;
