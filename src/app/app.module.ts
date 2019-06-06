@@ -34,7 +34,7 @@ import {
     StorefrontModule.withConfig({
 
       cmsComponents: {
-        ProductReviewsTabComponent : {
+        CMSTabParagraphContainer : {
           selector : 'app-pandamonster-product-review',
         },
       },
