@@ -1,0 +1,55 @@
+<div class="details" *ngIf="(product$ | async) as product">
+  <ng-container>
+    <h3 #descriptionHeader (click)="select($event, description)">
+      {{ 'productDetails.productDetails' | cxTranslate }}
+    </h3>
+    <div #description>
+      <div class="container" [innerHTML]="product?.description"></div>
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <h3 (click)="select($event, specifications)">
+      {{ 'productDetails.specification' | cxTranslate }}
+    </h3>
+    <div #specifications>
+      <div class="container">
+        <h2>{{ 'productDetails.specification' | cxTranslate }}</h2>
+        <!-- <cx-product-attributes [product]="product"></cx-product-attributes> -->
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <h3 #reviewHeader (click)="select($event, reviews)">
+      {{ 'productDetails.reviews' | cxTranslate }} ({{
+        product?.numberOfReviews
+      }})
+    </h3>
+    <div #reviews>
+      <div class="container">
+        <h2>
+          {{ 'productDetails.reviews' | cxTranslate }} ({{
+            product?.numberOfReviews
+          }})
+        </h2>
+        <app-pandamonster-product-review
+          class="container"
+       
+        ></app-pandamonster-product-review>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <h3 (click)="select($event, shipping)">
+      {{ 'productDetails.shipping' | cxTranslate }}
+    </h3>
+    <div #shipping>
+      <div class="container">
+        <h2>{{ 'productDetails.shipping' | cxTranslate }}</h2>
+
+      </div>
+    </div>
+  </ng-container>
+</div>

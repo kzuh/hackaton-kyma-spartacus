@@ -14,14 +14,16 @@ import {
   FormComponentsModule,
   StarRatingModule,
 } from '@spartacus/storefront';
+import { PandamonsterProductsTabComponent } from './pandamonster-products-tab/pandamonster-products-tab.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReviewProductPopupComponent,
-    PandamonsterProductReviewComponent
+    PandamonsterProductReviewComponent,
+    PandamonsterProductsTabComponent
   ],
-  entryComponents:[PandamonsterProductReviewComponent, ReviewProductPopupComponent],
+  entryComponents:[PandamonsterProductReviewComponent, ReviewProductPopupComponent, PandamonsterProductsTabComponent],
   imports: [
     BrowserModule,
     
@@ -35,7 +37,7 @@ import {
 
       cmsComponents: {
         CMSTabParagraphContainer : {
-          selector : 'app-pandamonster-product-review',
+          selector : 'app-pandamonster-products-tab',
         },
         reviewBanner:{
           selector: 'app-review-product-popup'

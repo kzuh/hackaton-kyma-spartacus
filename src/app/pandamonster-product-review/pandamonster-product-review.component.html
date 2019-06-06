@@ -22,7 +22,10 @@
           tabindex="0"
           *ngFor="let review of (reviews | slice: 0:maxListItems)"
         >
-          <div class="title">{{ review.headline }}</div>
+          <div class="title">{{ review.headline }}
+            <span *ngIf="review.verified" class="fas fa-check-circle"> Verified review</span> 
+
+          </div>
           <cx-star-rating
             [rating]="review.rating"
             [disabled]="true"
@@ -31,10 +34,7 @@
             {{ review.alias ? review.alias : review.principal?.name }}
           </div>
           <div class="date">{{ review.date | cxDate }}</div>
-          <!-- //TODO GetVerifiedreviews from data service -->
-
           
-          <i *ngIf="review.verified" class="fas fa-check-circle"></i> 
 
           <div class="text">{{ review.comment }}</div>
         </div>
