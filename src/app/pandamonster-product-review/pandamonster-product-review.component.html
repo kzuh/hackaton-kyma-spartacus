@@ -31,7 +31,11 @@
             {{ review.alias ? review.alias : review.principal?.name }}
           </div>
           <div class="date">{{ review.date | cxDate }}</div>
-          <i class="fas fa-check-circle" style="size: 10cm"></i>
+          <!-- //TODO GetVerifiedreviews from data service -->
+
+          
+          <i *ngIf="review.verified" class="fas fa-check-circle"></i> 
+
           <div class="text">{{ review.comment }}</div>
         </div>
         <div *ngIf="reviews.length > initialMaxListItems">

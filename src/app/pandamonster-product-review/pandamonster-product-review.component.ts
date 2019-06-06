@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { filter, switchMap, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { filter, switchMap, tap, mergeMap } from 'rxjs/operators';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Review, ProductReviewService, UIProduct} from '@spartacus/core';
+import { UIProduct, Review, ProductReviewService} from '@spartacus/core';
 import { CurrentProductService } from '@spartacus/storefront';
+import {PandamonsterReviewverifiedServiceService} from '../pandamonster-reviewverified-service.service'
 
 
 @Component({
@@ -25,15 +26,21 @@ product$: Observable<UIProduct> = this.currentProductService.getProduct();
 reviews$: Observable<Review[]> = this.product$.pipe(
   filter(Boolean),
   switchMap(product => this.reviewService.getByProductCode(product.code)),
+  filter(Boolean),  
+  tap(x => console.log('aaa', x)),
+  switchMap(reviews => this.reviewedVerifiedService.returnVerifiedReviees(reviews)),
+  tap(x => console.log('aab', x)),
   tap(() => {
     this.resetReviewForm();
     this.maxListItems = this.initialMaxListItems;
-  })
+  }),
+  
 );
 
 constructor(
   protected reviewService: ProductReviewService,
   protected currentProductService: CurrentProductService,
+  private reviewedVerifiedService: PandamonsterReviewverifiedServiceService,
   private fb: FormBuilder
 ) {}
 
